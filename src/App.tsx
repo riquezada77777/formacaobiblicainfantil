@@ -91,7 +91,8 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
   return (
     <div className="border-b border-gray-100 last:border-0 py-2">
       <button 
-        onClick={() => setIsOpen(!isOpen)}
+        type="button"
+        onClick={() => { setIsOpen(!isOpen); }}
         className="w-full py-4 flex items-center justify-between text-left focus:outline-none group"
       >
         <span className="font-bold text-gray-700 group-hover:text-brand-blue transition-colors pr-8">{question}</span>
@@ -241,8 +242,7 @@ export default function App() {
     if (planId === 'basic') {
       setIsUpgradeModalOpen(true);
     } else {
-      // Redirect behavior
-      console.log('Redirecting...');
+      window.location.href = 'https://pagamentosimples.com.br/glFKkcyL';
     }
   };
 
@@ -287,9 +287,12 @@ export default function App() {
 
           <div className="flex flex-col items-center gap-4">
             <motion.button
+              type="button"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="w-full max-w-md bg-brand-green hover:bg-green-600 text-white font-black py-6 px-8 rounded-3xl shadow-2xl shadow-green-200/50 transition-all text-2xl uppercase tracking-tight"
             >
               QUERO MEU FILHO APRENDENDO SOBRE DEUS
@@ -645,7 +648,10 @@ export default function App() {
                 
                 {/* Botão de Compra */}
                 <button 
-                  onClick={() => handlePlanClick(plan.id)}
+                  type="button"
+                  onClick={() => {
+                    handlePlanClick(plan.id);
+                  }}
                   className={`w-full py-5 rounded-full font-black text-base shadow-xl transition-all uppercase tracking-tight mb-8 ${
                     plan.highlighted 
                       ? 'bg-brand-green text-white hover:bg-green-600 shadow-green-200' 
@@ -752,9 +758,12 @@ export default function App() {
             <p className="text-blue-100/60 text-sm sm:text-lg font-bold uppercase tracking-widest">As crianças crescem rápido. Comece hoje.</p>
           </div>
           <motion.button 
+             type="button"
              whileHover={{ scale: 1.05 }}
              whileTap={{ scale: 0.98 }}
-             onClick={() => document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' })}
+             onClick={() => {
+               document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth' });
+             }}
              className="w-full max-w-lg bg-brand-green text-white font-black py-5 sm:py-7 px-8 sm:px-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-3xl shadow-blue-900/40 transition-all text-xl sm:text-2xl tracking-tighter uppercase"
           >
             QUERO COMEÇAR HOJE
@@ -797,7 +806,10 @@ export default function App() {
               className="bg-white rounded-[2rem] sm:rounded-[3rem] w-[92%] sm:max-w-lg overflow-hidden relative z-10 shadow-4xl border-2 sm:border-4 border-brand-orange"
             >
               <button 
-                onClick={() => setIsUpgradeModalOpen(false)}
+                type="button"
+                onClick={() => {
+                  setIsUpgradeModalOpen(false);
+                }}
                 className="absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-300 hover:text-gray-500 transition-colors z-20"
                 aria-label="Fechar pop-up"
               >
@@ -837,15 +849,18 @@ export default function App() {
                 </div>
 
                 <div className="flex flex-col gap-3 sm:gap-4">
-                  <button className="w-full bg-brand-green hover:bg-green-600 text-white font-black py-4 sm:py-5 rounded-2xl shadow-xl shadow-green-100 transition-all flex items-center justify-center gap-3 text-base sm:text-lg">
+                  <a 
+                    href="https://pagamentosimples.com.br/QpUYvFwk"
+                    className="w-full bg-brand-green hover:bg-green-600 text-white font-black py-4 sm:py-5 rounded-2xl shadow-xl shadow-green-100 transition-all flex items-center justify-center gap-3 text-base sm:text-lg no-underline"
+                  >
                     Quero Aproveitar por R$17,90 <ArrowRight size={18} className="sm:w-5 sm:h-5" />
-                  </button>
-                  <button 
-                    onClick={() => setIsUpgradeModalOpen(false)}
-                    className="w-full bg-transparent text-gray-400 hover:text-gray-600 font-black py-2 text-[9px] sm:text-[10px] uppercase tracking-widest transition-all"
+                  </a>
+                  <a 
+                    href="https://pagamentosimples.com.br/UkiZwdKw"
+                    className="w-full bg-transparent text-gray-400 hover:text-gray-600 font-black py-2 text-[9px] sm:text-[10px] uppercase tracking-widest transition-all text-center no-underline"
                   >
                     Não, quero continuar com o Essencial
-                  </button>
+                  </a>
                 </div>
               </div>
             </motion.div>
