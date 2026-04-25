@@ -120,37 +120,43 @@ const TestimonialCarousel = () => {
       text: "Meu filho só ficava no celular… agora ele mesmo pede pra fazer as atividades. Mudou muito aqui em casa.", 
       author: "Juliana R.", 
       role: "mãe", 
-      color: "bg-pink-100 text-pink-600" 
+      color: "bg-pink-100 text-pink-600",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=faces"
     },
     { 
       text: "Eu não sabia como ensinar a Bíblia pra minha filha. Agora ficou simples, só abro e uso.", 
       author: "Marcos S.", 
       role: "pai", 
-      color: "bg-blue-100 text-blue-600" 
+      color: "bg-blue-100 text-blue-600",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=faces"
     },
     { 
       text: "Usei com meus sobrinhos e eles realmente se interessaram mais. Ficou leve e divertido.", 
       author: "Fernanda A.", 
       role: "tia", 
-      color: "bg-purple-100 text-purple-600" 
+      color: "bg-purple-100 text-purple-600",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=faces"
     },
     { 
       text: "Material muito prático. Não precisei preparar nada, já vem tudo pronto.", 
       author: "Carlos M.", 
       role: "tio", 
-      color: "bg-green-100 text-green-600" 
+      color: "bg-green-100 text-green-600",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=faces"
     },
     { 
       text: "Uso com meus netos e eles prestam mais atenção nas histórias. Gostei muito.", 
       author: "Maria L.", 
       role: "avó", 
-      color: "bg-orange-100 text-orange-600" 
+      color: "bg-orange-100 text-orange-600",
+      image: "https://images.unsplash.com/photo-1544161513-0179fe746ef5?w=150&h=150&fit=crop&crop=faces"
     },
     { 
       text: "Excelente para ensinar de forma simples. Uso até com meus alunos.", 
       author: "Ana Paula M.", 
       role: "professora", 
-      color: "bg-brand-blue/10 text-brand-blue" 
+      color: "bg-brand-blue/10 text-brand-blue",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces"
     },
   ];
 
@@ -176,8 +182,12 @@ const TestimonialCarousel = () => {
               </p>
             </div>
             <div className="flex items-center gap-3">
-              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center font-bold text-sm ${t.color}`}>
-                <User size={20} />
+              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-sm overflow-hidden flex-shrink-0 ${t.color}`}>
+                {t.image ? (
+                  <img src={t.image} alt={t.author} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                ) : (
+                  <User size={20} />
+                )}
               </div>
               <div>
                 <h4 className="font-bold text-gray-800 text-sm leading-tight">{t.author}</h4>
