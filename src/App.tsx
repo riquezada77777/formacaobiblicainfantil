@@ -31,7 +31,8 @@ import {
   Shield,
   Check,
   CheckCircle2,
-  XCircle
+  AlertCircle,
+  Image as ImageIcon
 } from 'lucide-react';
 
 // --- Types ---
@@ -139,13 +140,6 @@ const TestimonialCarousel = () => {
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=faces"
     },
     { 
-      text: "Material muito prático. Não precisei preparar nada, já vem tudo pronto.", 
-      author: "Carlos M.", 
-      role: "tio", 
-      color: "bg-green-100 text-green-600",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=faces"
-    },
-    { 
       text: "Uso com meus netos e eles prestam mais atenção nas histórias. Gostei muito.", 
       author: "Maria L.", 
       role: "avó", 
@@ -207,39 +201,45 @@ export default function App() {
 
   const plans: Plan[] = [
     {
-      id: 'full',
-      name: "Acesso Completo",
-      badge: "MAIS ESCOLHIDO",
-      internalBadge: "TUDO INCLUSO",
-      priceOriginal: "97,00",
-      price: "22,90",
-      savings: "Economize R$74,10",
+      id: 'full', // Complete Plan (Right on desktop, First on mobile)
+      name: 'Formação Completa',
+      badge: 'MAIS ESCOLHIDO',
+      internalBadge: 'FORMAÇÃO COMPLETA',
+      priceOriginal: '97,00',
+      price: '22,90',
+      savings: 'Economize R$74,10',
       highlighted: true,
       benefits: [
-        'Atividades prontas',
-        'Histórias bíblicas simples',
-        'Desenhos para colorir',
-        'Guia simples para ensinar',
-        'Atividades rápidas (Bônus)',
-        'Desafios que prendem (Bônus)',
+        'Tudo do plano essencial',
+        '+160 atividades bíblicas',
+        '+100 desenhos bíblicos',
+        'Álbum de figurinhas',
+        'Mini Bíblia',
+        'Bônus exclusivos completos',
         'Acesso vitalício'
       ],
-      cta: "QUERO COMEÇAR AGORA"
+      bonuses: [
+        'O que fazer quando seu filho pede o celular na hora',
+        'Atividades pra usar nos momentos mais difíceis do dia',
+        'Desafios que prendem a atenção imediatamente',
+        'Cartões simples que ajudam seu filho a lembrar sem esforço'
+      ],
+      cta: '🎁 Quero Acesso Completo!'
     },
     {
-      id: 'basic',
-      name: "Essencial",
-      badge: "PLANO BÁSICO",
-      priceOriginal: "67,00",
-      price: "12,00",
+      id: 'basic', // Essential Plan (Left on desktop, Second on mobile)
+      name: 'Plano Essencial',
+      badge: 'PLANO ESSENCIAL',
+      priceOriginal: '67,00',
+      price: '12,00',
       highlighted: false,
       benefits: [
-        'Atividades básicas',
-        'Histórias bíblicas',
+        'Atividades bíblicas base',
         'Desenhos para colorir',
+        'Histórias bíblicas',
         'Acesso vitalício'
       ],
-      cta: "Quero o Essencial"
+      cta: 'Quero Acesso Essencial'
     }
   ];
 
@@ -263,16 +263,13 @@ export default function App() {
           transition={{ duration: 0.5 }}
         >
           <span className="inline-flex items-center gap-2 bg-brand-orange/10 text-brand-orange px-4 py-2 rounded-full text-[9px] sm:text-xs font-black uppercase tracking-widest mb-6 sm:mb-8">
-            <Zap size={14} /> Solução imediata para famílias cristãs
+            <Zap size={14} /> Pare de brigar com seu filho por causa do celular (faça isso em minutos)
           </span>
           <h1 className="font-display text-4xl sm:text-7xl font-black text-brand-blue leading-[1.05] mb-6 sm:mb-8">
-            “Eu parei de brigar com meu filho por causa do <span className="text-brand-orange bg-brand-orange/10 px-2 sm:px-3 rounded-lg">celular</span> depois disso…”
+            Seu filho não larga o <span className="text-brand-orange bg-brand-orange/10 px-2 sm:px-3 rounded-lg">celular</span> e tudo vira briga?
           </h1>
-          <p className="text-gray-600 text-lg sm:text-2xl mb-4 max-w-2xl mx-auto leading-relaxed font-bold">
-            E o mais estranho: ele começou a pedir essas atividades sozinho.
-          </p>
-          <p className="text-gray-500 text-base sm:text-xl mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
-            Sem gritos. Sem proibir. Só uma forma simples de substituir o celular por algo que realmente prende a atenção.
+          <p className="text-gray-600 text-lg sm:text-2xl mb-10 sm:mb-12 max-w-2xl mx-auto leading-relaxed font-bold">
+            Substitua o celular por atividades que prendem a atenção — sem gritar, sem forçar e sem precisar preparar nada
           </p>
 
           <div className="relative mb-14 max-w-4xl mx-auto group">
@@ -322,163 +319,132 @@ export default function App() {
       <section className="py-16 sm:py-24 px-6 bg-white relative overflow-hidden">
         <div className="absolute top-0 right-0 p-20 bg-brand-orange/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
         <div className="max-w-4xl mx-auto relative z-10">
-          <SectionTitle 
-            title="Seja sincero… isso acontece aí na sua casa?" 
-            subtitle="O conflito diário que desgasta o relacionamento entre pais e filhos"
-          />
+          <div className="flex justify-center mb-6 sm:mb-8">
+             <div className="w-16 h-1 bg-brand-orange rounded-full"></div>
+          </div>
+          <h2 className="text-center font-display text-3xl sm:text-5xl font-black text-brand-blue mb-10 sm:mb-14">
+            Seja sincero...
+          </h2>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="flex gap-4 group">
-                <div className="flex-shrink-0 w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-500">
-                  <XCircle size={28} />
-                </div>
-                <div>
-                  <p className="text-gray-700 font-bold leading-relaxed text-lg">
-                    Seu filho só quer saber de celular. Você tenta tirar… e vira briga.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4 group">
-                <div className="flex-shrink-0 w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-500">
-                  <XCircle size={28} />
-                </div>
-                <div>
-                  <p className="text-gray-700 font-bold leading-relaxed text-lg">
-                    Você até quer ensinar coisas boas, mas falta tempo, ideia… ou paciência.
-                  </p>
-                </div>
-              </div>
+          <div className="grid sm:grid-cols-2 gap-6 mb-16">
+            <div className="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
+               <p className="text-red-700 font-bold mb-2 flex items-center gap-2">
+                 <AlertCircle size={18} /> Você tira o celular... e vira briga
+               </p>
+               <p className="text-red-900/60 text-sm leading-relaxed">Aquela paz que você queria se transforma em estresse e choro em segundos.</p>
             </div>
             
-            <div className="bg-brand-orange/5 p-10 rounded-[2.5rem] border-2 border-dashed border-brand-orange/20 text-center relative">
-               <p className="text-2xl font-display font-black text-brand-blue mb-0 italic leading-relaxed">
-                 “Será que eu tô deixando o celular ocupar um espaço que era meu?”
+            <div className="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
+               <p className="text-red-700 font-bold mb-2 flex items-center gap-2">
+                 <AlertCircle size={18} /> Seu filho só presta atenção na tela
                </p>
-               <div className="absolute -bottom-6 -right-6 bg-brand-orange text-white p-4 rounded-3xl shadow-xl">
-                 <ShieldAlert size={32} />
-               </div>
+               <p className="text-red-900/60 text-sm leading-relaxed">Parece impossível competir com o brilho e a velocidade dos vídeos do YouTube.</p>
+            </div>
+            
+            <div className="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
+               <p className="text-red-700 font-bold mb-2 flex items-center gap-2">
+                 <AlertCircle size={18} /> Você quer ensinar algo bom, mas não sabe como começar
+               </p>
+               <p className="text-red-900/60 text-sm leading-relaxed">Você sabe que ele precisa de Deus, mas sentar para ler a Bíblia parece uma tarefa difícil demais.</p>
+            </div>
+            
+            <div className="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
+               <p className="text-red-700 font-bold mb-2 flex items-center gap-2">
+                 <AlertCircle size={18} /> No fim do dia, parece que o celular ganhou
+               </p>
+               <p className="text-red-900/60 text-sm leading-relaxed">Fica aquela culpa de no fundo saber que as telas estão educando seu filho.</p>
             </div>
           </div>
-
-          <div className="mt-20 text-center">
-             <p className="text-gray-600 text-xl font-medium mb-10">
-               Foi exatamente isso que eu percebi… E entendi uma coisa simples:
-             </p>
-             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
-               <div className="bg-brand-green/10 text-brand-green px-8 py-5 rounded-2xl font-black text-xl border-2 border-brand-green/20">
-                 👉 Não adianta tirar o celular
-               </div>
-               <div className="bg-brand-green text-white px-8 py-5 rounded-2xl font-black text-xl shadow-2xl shadow-green-200">
-                 👉 Você precisa substituir por algo melhor
-               </div>
-             </div>
+          
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <p className="text-brand-orange font-black uppercase tracking-widest text-xs mb-4">A mudança começa aqui</p>
+            <h3 className="text-2xl sm:text-3xl font-display font-black text-brand-blue leading-tight italic">
+              "Foi assim que eu parei de brigar com meu filho por causa do celular."
+            </h3>
           </div>
         </div>
       </section>
 
       {/* --- APRESENTAÇÃO DO PRODUTO (Foco em Solução Prática) --- */}
-      <section className="py-16 sm:py-24 px-6 bg-brand-bg/30">
-        <div className="max-w-4xl mx-auto">
-          <SectionTitle 
-            title="Foi assim que eu resolvi isso em casa" 
-            subtitle="Uma transição suave das telas para momentos com propósito real"
-          />
-          
-          <div className="grid md:grid-cols-2 gap-12 items-center mt-12">
-            <div className="order-2 md:order-1">
-              <p className="text-gray-700 text-lg sm:text-xl leading-relaxed mb-8">
-                Eu comecei a usar atividades simples, com histórias bíblicas… <br /><br />
-                E sem forçar nada, meu filho foi se interessando sozinho.
-              </p>
-              
-              <div className="space-y-4">
-                <h4 className="font-black text-brand-blue text-xl mb-4">Hoje em dia:</h4>
-                {[
-                  "Ele passa mais tempo longe da tela",
-                  "Presta mais atenção nas histórias",
-                  "E a gente tem mais momentos juntos"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
-                    <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center flex-shrink-0">
-                      <Check size={14} />
-                    </div>
-                    <span className="font-bold text-gray-700">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="order-1 md:order-2 relative">
-               <div className="aspect-square bg-gradient-to-tr from-brand-orange to-brand-gold rounded-[3rem] shadow-2xl overflow-hidden border-8 border-white p-4">
-                  <img src="https://images.unsplash.com/photo-1544211181-79ec261edae0?w=600&h=600&fit=crop" alt="Momento em família" className="w-full h-full object-cover rounded-[2rem]" referrerPolicy="no-referrer" />
-               </div>
-               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-3xl shadow-xl max-w-[180px] border border-gray-50">
-                  <p className="text-xs font-black text-brand-blue uppercase tracking-tighter leading-tight">
-                    Substitua o celular por conexões reais.
-                  </p>
-               </div>
-            </div>
-          </div>
+      <section className="py-16 sm:py-24 px-6">
+        <SectionTitle 
+          title="Uma forma simples de tirar seu filho do celular sem estresse" 
+          subtitle="Você só precisa imprimir e começar — seu filho se envolve sozinho"
+        />
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {[
+            { title: 'Seu filho aprende enquanto se diverte', icon: BookOpen },
+            { title: 'Mais tempo de verdade com seu filho', icon: Users },
+            { title: 'Jogos que Ensinam Valores', icon: Gamepad2 },
+            { title: 'Mini Bíblia Personalizada', icon: Heart },
+          ].map((item, i) => (
+            <FeatureCard key={i} title={item.title} icon={item.icon} />
+          ))}
+        </div>
+
+        <div className="max-w-4xl mx-auto mt-16 p-8 border-2 border-dashed border-gray-200 rounded-[2rem] bg-gray-50 flex flex-col items-center justify-center text-center">
+          <ImageIcon size={48} className="text-gray-300 mb-4" />
+          <p className="text-gray-400 font-bold uppercase tracking-widest text-xs sm:text-sm">
+            [INSERIR AQUI IMAGENS REAIS DE CRIANÇA USANDO O MATERIAL]
+          </p>
         </div>
       </section>
 
-      {/* --- O QUE É (POR QUE É TÃO COMPLETO) --- */}
+      {/* --- POR QUE É TÃO COMPLETO (Gatilhos Mentais Fortes) --- */}
       <section className="py-16 sm:py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <SectionTitle 
-            title="O que você vai receber" 
-            subtitle="Um acervo completo e organizado para transformar a rotina da sua casa"
-          />
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 mb-16">
+        <SectionTitle 
+          title="⭐ Por que esse acervo é tão completo?" 
+          subtitle="Tudo o que você precisa para uma educação bíblica transformadora e sem estresse."
+        />
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: 'Atividades Prontas', desc: 'Só imprimir e usar na hora', icon: Zap },
-              { title: 'Histórias Bíblicas', desc: 'Narrativas simples e envolventes', icon: BookOpen },
-              { title: 'Para Colorir', desc: 'Desenhos que ensinam brincando', icon: Palette },
-              { title: 'Tudo Organizado', desc: 'Sem precisar preparar ou inventar nada', icon: Layout },
+              { 
+                title: "Você não precisa preparar nada", 
+                text: "É só abrir e usar com seu filho. Sem estresse.",
+                icon: Zap
+              },
+              { 
+                title: "Tudo organizado e fácil", 
+                text: "Sem bagunça, sem confusão. Pronto para imprimir.",
+                icon: FolderOpen
+              },
+              { 
+                title: "Diversão com propósito", 
+                text: "Seu filho aprende enquanto se diverte. O melhor dos dois mundos.",
+                icon: Sparkles
+              },
+              { 
+                title: "Mais tempo longe das telas", 
+                text: "Substitui o celular por algo melhor. Recupere a atenção do seu filho.",
+                icon: Smartphone
+              },
+              { 
+                title: "Mesmo sem experiência", 
+                text: "Simples, direto e fácil de aplicar. Não precisa ser teólogo.",
+                icon: Lightbulb
+              },
+              { 
+                title: "Momentos em família", 
+                text: "Crie conexão real dentro de casa. Momentos que ficam para sempre.",
+                icon: Users
+              }
             ].map((item, i) => (
               <motion.div 
                 key={i}
-                className="bg-brand-bg/50 p-8 rounded-[2.5rem] border border-gray-100 hover:border-brand-orange/20 transition-all text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-[2rem] border border-gray-100 hover:border-brand-orange/20 hover:shadow-soft transition-all group"
               >
-                 <div className="w-14 h-14 bg-white text-brand-orange rounded-2xl flex items-center justify-center mb-6 mx-auto shadow-sm">
+                 <div className="w-12 h-12 bg-brand-bg text-brand-orange rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                    <item.icon size={28} />
                  </div>
-                 <h5 className="font-extrabold text-brand-blue text-lg mb-2">{item.title}</h5>
-                 <p className="text-gray-500 text-sm font-medium">{item.desc}</p>
+                 <h5 className="font-black text-brand-blue text-lg mb-3 leading-tight">{item.title}</h5>
+                 <p className="text-gray-500 text-sm leading-relaxed font-medium">{item.text}</p>
               </motion.div>
             ))}
-          </div>
-
-          <div className="bg-brand-blue p-8 sm:p-12 rounded-[3rem] text-white relative overflow-hidden">
-             <div className="absolute top-0 right-0 p-20 bg-white/5 rounded-full -mr-20 -mt-20 blur-3xl"></div>
-             <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                   <h3 className="font-display text-3xl sm:text-4xl font-black mb-6">Na prática, isso significa:</h3>
-                   <div className="space-y-4">
-                     {[
-                       "Menos tempo no celular",
-                       "Mais atenção e foco",
-                       "Mais conexão com seu filho",
-                       "Momentos com propósito dentro de casa"
-                     ].map((item, i) => (
-                       <div key={i} className="flex items-center gap-4">
-                         <div className="w-8 h-8 bg-brand-green rounded-full flex items-center justify-center flex-shrink-0 text-white shadow-lg shadow-green-900/20">
-                           <Check size={18} />
-                         </div>
-                         <span className="text-lg sm:text-xl font-bold">{item}</span>
-                       </div>
-                     ))}
-                   </div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-8 rounded-[2rem] border border-white/20">
-                   <p className="text-blue-100 text-lg italic font-medium leading-relaxed">
-                     "Finalmente um material que não exige que eu seja professor ou teólogo para ensinar meus filhos."
-                   </p>
-                   <p className="mt-4 font-black text-brand-gold">— Testemunho de Pai</p>
-                </div>
-             </div>
-          </div>
         </div>
       </section>
 
@@ -487,58 +453,83 @@ export default function App() {
         <div className="absolute top-0 left-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl -ml-32 -mt-32"></div>
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <SectionTitle 
-            title="E hoje você ainda recebe:" 
-            subtitle="Bônus exclusivos para facilitar ainda mais o seu dia a dia"
+            title="🎁 BÔNUS EXCLUSIVOS (GRÁTIS HOJE)" 
+            subtitle="Você leva tudo isso sem pagar nada a mais hoje"
           />
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
               {
-                title: "Guia para Ensinar",
-                desc: "Guia simples para ensinar mesmo sem nenhuma experiência prévia.",
-                icon: BookOpen,
-                highlight: "Sem mistérios"
+                title: "O que fazer quando seu filho pede o celular na hora",
+                desc: "Estratégias práticas para lidar com a dependência digital.",
+                benefits: ["Ajuda no início", "Simples no dia a dia", "Facilita o aprendizado"],
+                originalPrice: "R$37",
+                icon: BookOpen
               },
               {
-                title: "Atividades Rápidas",
-                desc: "Atividades práticas para os seus dias mais corridos.",
-                icon: Clock,
-                highlight: "Foco em agilidade"
+                title: "Atividades pra usar nos momentos mais difíceis do dia",
+                desc: "Ideias simples para ensinar em poucos minutos, perfeito para pressa.",
+                benefits: ["Piedade em minutos", "Fácil de aplicar", "Uso imediato"],
+                originalPrice: "R$27",
+                icon: Clock
               },
               {
-                title: "Desafios que Prendem",
-                desc: "Desafios criativos que prendem a atenção total da criança.",
-                icon: Flame,
-                highlight: "Engajamento total"
+                title: "Desafios que prendem a atenção imediatamente",
+                desc: "Desafios leves e divertidos que engajam a criança na hora.",
+                benefits: ["Aumenta o interesse", "Dinâmico", "Divertido"],
+                originalPrice: "R$47",
+                icon: Flame
+              },
+              {
+                title: "Cartões simples que ajudam seu filho a lembrar sem esforço",
+                desc: "Mensagens simples e visuais bonitos para memorizar valores.",
+                benefits: ["Fácil de entender", "Ajuda na memória", "Uso diário"],
+                originalPrice: "R$17",
+                icon: Layout
               }
             ].map((bonus, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-[2.5rem] shadow-soft border border-gray-100 relative overflow-hidden group"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="bg-white p-8 rounded-[3rem] shadow-soft border-2 border-brand-gold/5 text-left flex flex-col group justify-between h-full relative hover:shadow-xl hover:shadow-brand-gold/10 transition-all font-sans"
               >
-                <div className="w-14 h-14 bg-brand-bg text-brand-orange rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <bonus.icon size={28} />
+                <div>
+                  <div className="w-14 h-14 bg-brand-gold/10 text-brand-gold rounded-2xl flex items-center justify-center mb-6 shadow-inner ring-4 ring-brand-gold/5">
+                    <bonus.icon size={28} />
+                  </div>
+                  <h4 className="font-extrabold text-brand-blue text-lg mb-3 leading-tight group-hover:text-brand-orange transition-colors">
+                    🎁 {bonus.title}
+                  </h4>
+                  <p className="text-gray-500 text-xs mb-6 leading-relaxed font-bold italic opacity-80">
+                    “{bonus.desc}”
+                  </p>
+                  <ul className="space-y-2 mb-8">
+                    {bonus.benefits.map((b, j) => (
+                      <li key={j} className="flex items-center gap-2 text-[10px] font-black text-gray-400 uppercase tracking-tight">
+                        <Check size={12} className="text-brand-green" strokeWidth={3} /> {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h4 className="font-black text-brand-blue text-xl mb-3">{bonus.title}</h4>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6 font-medium">
-                  {bonus.desc}
-                </p>
-                <div className="inline-block bg-brand-gold/10 text-brand-gold text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full">
-                  {bonus.highlight}
+                
+                <div className="pt-6 border-t border-gray-50">
+                   <div className="flex flex-col gap-0.5">
+                     <span className="text-[10px] font-bold text-gray-300 line-through">DE {bonus.originalPrice}</span>
+                     <div className="flex items-center justify-between">
+                       <span className="text-xl font-black text-brand-green tracking-tighter">R$0 HOJE</span>
+                       <Gift size={20} className="text-brand-gold/20" />
+                     </div>
+                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-brand-blue text-white p-6 sm:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden"
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-brand-blue text-white p-6 sm:p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <Sparkles size={120} />
@@ -568,10 +559,10 @@ export default function App() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="font-display text-2xl sm:text-4xl font-black mb-4">
-              💰 Comece hoje sem complicação
+              💰 Escolha seu acesso à <span className="text-brand-orange text-shadow-sm">Formação Bíblica</span> Infantil em Casa
             </h2>
             <p className="text-gray-400 text-sm font-bold uppercase tracking-wider">
-              Acesso imediato ao material completo • Pagamento único — sem mensalidade
+              Acesso imediato após a compra. Conteúdo digital pronto para usar.
             </p>
           </div>
           
@@ -702,18 +693,25 @@ export default function App() {
 
       {/* --- GARANTIA (Risco Zero) --- */}
       <section className="py-16 sm:py-24 px-6 bg-white border-y border-gray-100">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-50 p-8 sm:p-12 rounded-[3rem] border border-gray-100 relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
-            <div className="relative z-10 w-24 sm:w-32 flex-shrink-0">
-               <Shield size={64} className="text-brand-orange mx-auto" />
-            </div>
-            <div className="text-center md:text-left">
-              <h2 className="font-display text-2xl sm:text-3xl font-black text-brand-blue mb-4">Teste sem risco</h2>
-              <p className="text-gray-600 text-sm sm:text-lg font-medium leading-relaxed">
-                Se você não gostar, devolvemos 100% do seu dinheiro. Simples assim. Você tem 7 dias para testar todo o material com seu filho.
-              </p>
-            </div>
+        <div className="max-w-4xl mx-auto grid md:grid-cols-[200px_1fr] items-center gap-8 sm:gap-12">
+        <div className="flex justify-center">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 bg-brand-gold/10 rounded-full flex items-center justify-center relative">
+             <Shield size={48} className="text-brand-gold sm:w-16 sm:h-16" />
+             <div className="absolute -bottom-2 bg-brand-gold text-white font-black text-[9px] sm:text-xs px-3 py-1 rounded-full shadow-lg border-2 border-white whitespace-nowrap">100% SEGURO</div>
           </div>
+        </div>
+        <div className="text-center md:text-left">
+          <h2 className="font-display text-2xl sm:text-4xl font-black text-brand-blue mb-4 sm:mb-6">
+            Teste sem risco.
+          </h2>
+          <p className="text-gray-600 text-base sm:text-xl leading-relaxed mb-6 font-bold">
+            Se você não gostar, devolvemos 100% do seu dinheiro.
+          </p>
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4">
+             <div className="flex items-center justify-center sm:justify-start gap-2 text-[10px] sm:text-xs font-black text-gray-400 uppercase tracking-widest">🛡️ Reembolso em 1 clique</div>
+             <div className="flex items-center justify-center sm:justify-start gap-2 text-[10px] sm:text-xs font-black text-gray-400 uppercase tracking-widest">📅 7 Dias de garantia total</div>
+          </div>
+        </div>
         </div>
       </section>
 
@@ -752,14 +750,17 @@ export default function App() {
            whileInView={{ opacity: 1, scale: 1 }}
            className="max-w-3xl mx-auto text-center"
         >
-          <div className="mb-10 sm:mb-14">
-            <h2 className="font-display text-3xl sm:text-6xl font-black leading-tight mb-8 sm:mb-10">
-              O problema não é o celular existir. É ele ocupar o espaço que deveria ser seu.
-            </h2>
-            <p className="text-blue-100 text-lg sm:text-2xl font-medium leading-relaxed mb-8">
-              E quanto mais você adia… mais isso vira rotina. Rompa esse ciclo hoje mesmo.
+          <div className="text-brand-orange mb-6 sm:mb-8 flex justify-center">
+            <Heart size={48} className="text-brand-orange fill-brand-orange animate-pulse sm:w-16 sm:h-16" />
+          </div>
+          <h2 className="font-display text-3xl sm:text-6xl font-black mb-8 sm:mb-10 leading-[1.1]">
+            O celular já está ocupando um espaço que deveria ser seu.
+          </h2>
+          <div className="mb-10 sm:mb-14 space-y-4">
+            <p className="text-blue-100 text-lg sm:text-2xl font-black max-w-xl mx-auto leading-relaxed italic">
+              "Se você não agir agora, o celular continua ocupando esse espaço."
             </p>
-            <p className="text-blue-100/60 text-sm sm:text-lg font-bold uppercase tracking-widest">As crianças crescem rápido. Comece hoje.</p>
+            <p className="text-blue-100/60 text-sm sm:text-lg font-bold uppercase tracking-widest">Quanto mais você espera, mais isso vira rotina.</p>
           </div>
           <motion.button 
              type="button"
@@ -770,7 +771,7 @@ export default function App() {
              }}
              className="w-full max-w-lg bg-brand-green text-white font-black py-5 sm:py-7 px-8 sm:px-10 rounded-[2rem] sm:rounded-[2.5rem] shadow-3xl shadow-blue-900/40 transition-all text-xl sm:text-2xl tracking-tighter uppercase"
           >
-            👉 COMEÇAR HOJE
+            QUERO COMEÇAR HOJE
           </motion.button>
         </motion.div>
       </section>
