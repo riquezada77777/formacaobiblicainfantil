@@ -383,12 +383,19 @@ export default function App() {
           ))}
         </div>
 
-        <div className="max-w-4xl mx-auto mt-16 p-8 border-2 border-dashed border-gray-200 rounded-[2rem] bg-gray-50 flex flex-col items-center justify-center text-center">
-          <ImageIcon size={48} className="text-gray-300 mb-4" />
-          <p className="text-gray-400 font-bold uppercase tracking-widest text-xs sm:text-sm">
-            [INSERIR AQUI IMAGENS REAIS DE CRIANÇA USANDO O MATERIAL]
-          </p>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mt-16 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white"
+        >
+          <img 
+            src="https://i.ibb.co/j9kDZ4Dt/743cb7f8-bd23-4f59-bc5f-d2c647f2fdcf.png" 
+            alt="Crianças usando o material bíblico" 
+            className="w-full h-auto"
+            referrerPolicy="no-referrer"
+          />
+        </motion.div>
       </section>
 
       {/* --- POR QUE É TÃO COMPLETO (Gatilhos Mentais Fortes) --- */}
